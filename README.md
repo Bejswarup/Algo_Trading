@@ -1,3 +1,4 @@
 # Algo_Trading
 
-![Uploading image.png…]()
+
+![Uploading 1stock.jpg…]()
