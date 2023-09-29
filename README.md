@@ -51,6 +51,7 @@ To use this algorithmic trading system, follow these steps:
     - Set a Stop Loss (sl) and a Target. If you select 0 as the target, the system will trail the stop loss.
 
     - If you put a target other than 0, the system will trail the stop loss as explained in the description.
+    - If you want to do virtual trade coose 0 otherwise choose 1.
 
 5. **Execute the Trade**: The system will execute the chosen option trade based on your inputs and continuously manage the trade according to your specified stop loss and target parameters.
 
