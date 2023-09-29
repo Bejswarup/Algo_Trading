@@ -1,6 +1,6 @@
 # Algo Trading without API Key with Zerodha Kite
 
-**Important: This guide is intended for Zerodha Kite users only.**
+**Important: This guide is intended for Zerodha Kite users only. This is for trailing stop loss in naked directional trade.**
 
 ## Introduction
 
