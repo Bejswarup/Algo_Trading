@@ -55,7 +55,7 @@ To use this algorithmic trading system, follow these steps:
 
 5. **Execute the Trade**: The system will execute the chosen option trade based on your inputs and continuously manage the trade according to your specified stop loss and target parameters.
 
-6. **Let's walk through an example of how trailing stop loss works in your Algo Trading system using the parameters you provided**:
+## Let's walk through an example of how trailing stop loss works in your Algo Trading system using the parameters you provided:
 
 Suppose you decide to Sell a NIFTY23SEP19700CE option for 50 rupees. You set a Stop Loss (sl) of 5 rupees and a Target of 0 (indicating you want to trail the stop loss).
 
@@ -80,6 +80,7 @@ Here's how the trailing stop loss would work:
 
 4. Profit Booking:
    - If the LTP increases and hits your exit price, you exit the trade. For example, if the LTP reaches 55 rupees, you book a loss of 5 rupees.
+   - If corrent time is more than 3:20pm then it will close the trade.
 
 The key idea is that the trailing stop loss adapts to market conditions. It moves in your favor as the price increases but remains static when the price decreases, allowing you to potentially capture more profit while protecting yourself from significant losses.
 
