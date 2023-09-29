@@ -1,4 +1,4 @@
-# Algo Trading with Zerodha Kite
+# Algo Trading without API Key with Zerodha Kite
 
 **Important: This guide is intended for Zerodha Kite users only.**
 
@@ -22,7 +22,7 @@ To use this algorithmic trading system, follow these steps:
 
 1. **Clone the Repository**: Clone the GitHub repository "Algo_Trading" to your local machine.
 
-2. **Set Up API Credentials**: You will need to provide your Zerodha Kite API credentials, particularly the `enctoken`. Here's how to obtain it:
+2. **Set Up API Credentials**: You do not need to provide the Zerodha Kite API Key; provide only the `enctoken`. Here's how to obtain it:
 
     - Log in to your Zerodha Kite account.
     
