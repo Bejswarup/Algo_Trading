@@ -57,21 +57,21 @@ To use this algorithmic trading system, follow these steps:
 
 ## Let's walk through an example of how trailing stop loss works in your Algo Trading system using the parameters you provided:
 
-Suppose you decide to Sell a NIFTY23SEP19700CE option for 50 rupees. You set a Stop Loss (sl) of 5 rupees and a Target of 0 (indicating you want to trail the stop loss).
+Suppose you decide to sell a NIFTY23SEP19700CE option for 50 rupees. You set a Stop Loss (sl) of 5 rupees and a Target of 0 (indicating you want to trail the stop loss).
 
 Here's how the trailing stop loss would work:
 
 1. Initial Setup:
    - You sell the NIFTY23SEP19700CE option for 50 rupees.
-   - Your initial stop loss is set at 5 rupees.
+   - Your initial stop loss is set at 5 rupees. That is initial exit price is 55 rupees.
    - Your initial target is set to 0 (indicating trailing stop loss).
 
 2. Price Movements:
-   - If the Last Traded Price (LTP) increases to 55 rupees, your exit price remains at 55 rupees, and you book a loss (since your stop loss is 5 rupees below the entry price).
+   - If the Last Traded Price (LTP) increases to 55 rupees, your exit price remains at 55 rupees, and you book a loss (since your stop loss is 5 rupees above the entry price).
 
-   - If the LTP decreases to 45 rupees, your exit price is adjusted to 50 rupees (the original entry price), and you still book a loss.
+   - If the LTP decreases to 45 rupees, your exit price is adjusted to 50 rupees (the original entry price), and you still in the position.
 
-   - If the LTP decreases further to 40 rupees, your exit price is adjusted to 45 rupees. At this point, if the price increases to 45 rupees, you break even (exit at the entry price).
+   - If the LTP decreases further to 40 rupees, your exit price is adjusted to 45 rupees. At this point, if the price increases to 45 rupees, you book a profit of 5 rupees.
 
    - If the LTP decreases to 35 rupees, your exit price is adjusted to 40 rupees, and so on. The stop loss is constantly adjusted as the LTP moves in your favor.
 
@@ -81,10 +81,11 @@ Here's how the trailing stop loss would work:
 4. Profit Booking:
    - If the LTP increases and hits your exit price, you exit the trade. For example, if the LTP reaches 55 rupees, you book a loss of 5 rupees.
    - If corrent time is more than 3:20pm then it will close the trade.
+   - - If you provide target as 2, then if LTP hit your target , it will book the profit and close the position.
 
-The key idea is that the trailing stop loss adapts to market conditions. It moves in your favor as the price increases but remains static when the price decreases, allowing you to potentially capture more profit while protecting yourself from significant losses.
+The key idea is that the trailing stop loss adapts to market conditions. It moves in your favor as the price goes in your favor but remains static when the price goes against your favor, allowing you to potentially capture more profit while protecting yourself from significant losses.
 
-Remember that trailing stop loss can be a useful strategy, but it doesn't guarantee profits, and it's essential to carefully consider your risk tolerance and overall trading plan.
+Remember that trailing stop loss can be a useful strategy, but it doesn't guarantee profits, and it's essential to carefully consider your risk tolerance and overall trading plan. It will only stop your loss what you decided before taking a trade.
 
 ## Why Algo Trading?
 
