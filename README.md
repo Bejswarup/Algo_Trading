@@ -55,6 +55,36 @@ To use this algorithmic trading system, follow these steps:
 
 5. **Execute the Trade**: The system will execute the chosen option trade based on your inputs and continuously manage the trade according to your specified stop loss and target parameters.
 
+6. **Let's walk through an example of how trailing stop loss works in your Algo Trading system using the parameters you provided**:
+
+Suppose you decide to Sell a NIFTY23SEP19700CE option for 50 rupees. You set a Stop Loss (sl) of 5 rupees and a Target of 0 (indicating you want to trail the stop loss).
+
+Here's how the trailing stop loss would work:
+
+1. Initial Setup:
+   - You sell the NIFTY23SEP19700CE option for 50 rupees.
+   - Your initial stop loss is set at 5 rupees.
+   - Your initial target is set to 0 (indicating trailing stop loss).
+
+2. Price Movements:
+   - If the Last Traded Price (LTP) increases to 55 rupees, your exit price remains at 55 rupees, and you book a loss (since your stop loss is 5 rupees below the entry price).
+
+   - If the LTP decreases to 45 rupees, your exit price is adjusted to 50 rupees (the original entry price), and you still book a loss.
+
+   - If the LTP decreases further to 40 rupees, your exit price is adjusted to 45 rupees. At this point, if the price increases to 45 rupees, you break even (exit at the entry price).
+
+   - If the LTP decreases to 35 rupees, your exit price is adjusted to 40 rupees, and so on. The stop loss is constantly adjusted as the LTP moves in your favor.
+
+3. Trailing Stop Loss Activation:
+   - As long as the LTP keeps decreasing and your exit price is adjusted downwards, the trailing stop loss remains in effect.
+
+4. Profit Booking:
+   - If the LTP increases and hits your exit price, you exit the trade. For example, if the LTP reaches 55 rupees, you book a loss of 5 rupees.
+
+The key idea is that the trailing stop loss adapts to market conditions. It moves in your favor as the price increases but remains static when the price decreases, allowing you to potentially capture more profit while protecting yourself from significant losses.
+
+Remember that trailing stop loss can be a useful strategy, but it doesn't guarantee profits, and it's essential to carefully consider your risk tolerance and overall trading plan.
+
 ## Why Algo Trading?
 
 The Algo Trading system is designed to help traders avoid impulsive decisions driven by emotions like greed and fear. By following a structured approach, it aims to improve trading discipline and potentially enhance trading results.
