@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(226, 231, 239);
+}
+
+/* Style the header */
+.header {
+  background-color: #92d7e3;
+  padding: 20px;
+  text-align: center;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer1 {
+    background-color: #92d7e3;
+    /* padding: 50px; */
+    /* padding: auto; */
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle, .footer1 {
+    width: 100%;
+  }
+}
+</style>
+<body>
+    <div class="header">
+      <h1>Algo Trading without API Key with Zerodha Kite</h1>
+      <p style="text-align: center;">This guide is intended for Zerodha Kite users only. This is for
+        trailing stop loss in naked directional trade. </p>
+    </div>
+    <div class="row">
+        <div class="column side">
+            <h3>Why Algo Trading?</h3>
+            <p>
+                The Algo Trading system is designed to help traders avoid impulsive decisions driven by emotions like greed and fear. 
+                <br>
+                By following a structured approach, it aims to improve trading discipline and potentially enhance trading results.
+            </p>
+        </div>
+        <div class="column middle">
+            <h3>Introduction </h3>
+            <p>
+                Algo Trading with Zerodha Kite is a Python-based algorithmic trading system that helps traders make informed decisions while trading options on the NSE (National Stock Exchange) platform. This system aims to eliminate emotional trading and provide a structured approach to option trading.
+            </p>
+            <h3>Repository Contents</h3>
+            <p>
+                This GitHub repository, named <a href="https://github.com/Bejswarup/Algo_Trading" style="text-decoration: none;"> "Algo_Trading" </a>contains the following Python files:
+                <ol>
+                    <li>Intraday_Option_trading.py:</li>
+                    <p> 
+                        This file likely contains the core logic for intraday option trading.
+                    </p>
+                    
+                    <li> kite_trade.py:</li> 
+                    <p> 
+                        This file is responsible for interacting with the Zerodha Kite API to execute trades.
+                    </p>
+                        
+                    <li> TESTing.py:</li>
+                    <p>
+                        This file acts as the main interface for users to input their trading parameters and execute option trades.
+                    </p> 
+                </ol>
+            </p>
+            <h3>How to use</h3>
+            To use this algorithmic trading system, follow these steps:
+            <ol>
+                <li>
+                    <h4>
+                        Clone the Repository:
+                    </h4>
+                    <p>Clone the GitHub repository "Algo_Trading" to your local machine.</p>
+                </li>
+                <li>
+                    <h4>Set Up API Credentials:</h4>
+                    You do not need to provide the Zerodha Kite API Key; provide only the enctoken. Here's how to obtain it:
+                    <ul>
+                        <li>
+                            Log in to your Zerodha Kite account.
+                        </li>
+                        <li>
+                            Right-click anywhere on the page and select "Inspect" to open the browser's developer tools.
+                        </li>
+                        <li>
+                            Go to the "Network" tab.
+                        </li>
+                        <li>
+                            Press Ctrl+R to reload the page.
+                        </li>
+                        <li>
+                            Click on the "position" request in the network traffic list.
+                        </li>
+                        <li>
+                            In the "Headers" section, locate the "Authorization" header. The enctoken will be found here.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Run TESTING.py:</h4> After placing all three Python files in the same directory and providing the enctoken, run the TESTing.py file.
+                </li>
+                <li>
+                    <h4>
+                        Follow the Prompts:
+                    </h4>
+                    The script will prompt you to make several choices:
+                    <ul>
+                        <li>
+                            Choose the instrument (NSE:NIFTY FIN SERVICE, NSE:NIFTY BANK, NSE:NIFTY 50, NSE:NIFTY MID SELECT) by selecting 0, 1, 2, or 3.
+                        </li>
+                        <li>
+                            Choose Call (CE) or Put (PE) options by entering 0 or 1.
+                        </li>
+                        <li>
+                            elect At The Money (ATM), In The Money (ITM), or Out of The Money (OTM) options in the same way.
+                        </li>
+                        <li>
+                            Decide whether you want to Buy or Sell the selected option.
+                        </li>
+                        <li>
+                            Set a Stop Loss (sl) and a Target. If you select 0 as the target, the system will trail the stop loss.
+                        </li>
+                        <li>
+                            If you put a target other than 0, the system will trail the stop loss as explained in the description.
+                        </li>
+                        <li>
+                            If you want to do virtual trade coose 0 otherwise choose 1.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Execute the Trade:</h4> The system will execute the chosen option trade based on your inputs and continuously manage the trade according to your specified stop loss and target parameters.
+                </li>
+
+            </ol>
+            <h3>
+                Let's walk through an example of how trailing stop loss works in your Algo Trading system using the parameters you provided:
+            </h3>
+            <p>
+                Suppose you decide to sell a NIFTY23SEP19700CE option for 50 rupees. You set a Stop Loss (sl) of 5 rupees and a Target of 0 (indicating you want to trail the stop loss).
+            </p>
+            Here's how the trailing stop loss would work:
+            <ol>
+                <li>
+                    Initial Setup:
+                    <ul>
+                        <li>
+                            You sell the NIFTY23SEP19700CE option for 50 rupees.
+                        </li>
+                        <li>
+                            Your initial stop loss is set at 5 rupees. That is initial exit price is 55 rupees.
+                        </li>
+                        <li>
+                            Your initial target is set to 0 (indicating trailing stop loss).
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Price Movements:
+                    <ul>
+                        <li>
+                            If the Last Traded Price (LTP) increases to 55 rupees, your exit price remains at 55 rupees, and you book a loss (since your stop loss is 5 rupees above the entry price).
+                        </li>
+                        <li>
+                            If the LTP decreases to 45 rupees, your exit price is adjusted to 50 rupees (the original entry price), and you still in the position.
+                        </li>
+                        <li>
+                            If the LTP decreases further to 40 rupees, your exit price is adjusted to 45 rupees. At this point, if the price increases to 45 rupees, you book a profit of 5 rupees.
+                        </li>
+                        <li>
+                            If the LTP decreases to 35 rupees, your exit price is adjusted to 40 rupees, and so on. The stop loss is constantly adjusted as the LTP moves in your favor.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    railing Stop Loss Activation:
+                    <ul>
+                        <li>
+                            As long as the LTP keeps decreasing and your exit price is adjusted downwards, the trailing stop loss remains in effect.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Profit Booking:
+                    <ul>
+                        <li>
+                            If the LTP increases and hits your exit price, you exit the trade. For example, if the LTP reaches 55 rupees, you book a loss of 5 rupees.
+                        </li>
+                        <li>
+                            If corrent time is more than 3:20pm then it will close the trade.
+                        </li>
+                        <li>
+                            If you provide target as 2, then if LTP hit your target , it will book the profit and close the position.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <p> 
+                The key idea is that the trailing stop loss adapts to market conditions. It moves in your favor as the price goes in your favor but remains static when the price goes against your favor, allowing you to potentially capture more profit while protecting yourself from significant losses.
+            </p>
+            <p>
+                Remember that trailing stop loss can be a useful strategy, but it doesn't guarantee profits, and it's essential to carefully consider your risk tolerance and overall trading plan. It will only stop your loss what you decided before taking a trade.
+            </p>
+        </div>
+        <div class="column side">
+            <h4>GitHub Repositary link of this project.</h4>
+            <a href="https://github.com/Bejswarup/Algo_Trading" target="_blank" style="text-decoration: none;"> <img src="data:image/png;base64,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" alt="GitHub"> </a>
+        </div>
+    </div>
+    <footer class="footer1">
+        <h3>Feedback and Contact</h3>
+        <p>
+            If you find this repository helpful, please consider giving it a star. If you have questions or want to discuss coding your own trading strategy, feel free to contact the author at the following:
+        </p>
+        
+        <p>
+                Phone: 7602056463
+            <br>
+                Email: bejswarup90@gmail.com
+                <br>
+            </p>
+           
+        Happy trading with Algo Trading and may your investments be successful!
+    </footer>
+</body>
+</html>
